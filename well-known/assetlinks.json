@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.waljrg.graduale",
+    "sha256_cert_fingerprints": ["C4:3B:70:D8:6D:F5:B6:4A:B5:A0:20:8C:0E:55:88:F3:49:7B:00:64:4D:7B:53:4F:31:CC:F2:08:6F:98:E8:9B"]
+  }
+}]
