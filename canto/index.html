@@ -159,6 +159,16 @@
       ${tono ? `<p class="canto-tono">Tono: ${decodeURIComponent(tono)}</p>` : ''}
     `;
   }
+
+  // Intento forzado de abrir la app — necesario porque WhatsApp, Instagram, etc.
+  // abren los links en su propio navegador integrado, lo que evita que Android
+  // detecte automáticamente que la app puede manejar el enlace.
+  const id = params.get('id');
+  if (id) {
+    const fallbackUrl = window.location.href;
+    const intentUrl = `intent://waljrg.github.io/graduale-links/canto/${window.location.search}#Intent;scheme=https;package=com.waljrg.graduale;S.browser_fallback_url=${encodeURIComponent(fallbackUrl)};end`;
+    window.location.href = intentUrl;
+  }
 </script>
 </body>
 </html>
