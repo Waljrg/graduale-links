@@ -3,6 +3,6 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.waljrg.graduale",
-    "sha256_cert_fingerprints": ["C4:3B:70:D8:6D:F5:B6:4A:B5:A0:20:8C:0E:55:88:F3:49:7B:00:64:4D:7B:53:4F:31:CC:F2:08:6F:98:E8:9B"]
+    "sha256_cert_fingerprints": ["80:CD:05:C7:8E:1B:D0:41:E5:76:6B:D5:4F:0F:F6:E8:84:A8:59:8C:E2:D1:00:7F:BB:5D:90:97:92:2D:4A:33"]
   }
 }]
