@@ -3,307 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Términos y Condiciones — Graduale Nostrum</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-    :root {
-        --bg: #FDFBF7;
-        --bg-alt: #F7F1E4;
-        --text: #3E322E;
-        --text-soft: #7A6A5E;
-        --accent: #B8860B;
-        --accent-light: #E8D4A2;
-        --line: rgba(184,134,11,0.18);
-    }
-    * { box-sizing: border-box; }
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.7;
-    }
-    a { color: var(--accent); }
-
-    .topbar {
-        position: sticky; top: 0; z-index: 10;
-        background: rgba(253,251,247,0.9);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--line);
-        padding: 14px 20px;
-        display: flex; align-items: center; gap: 10px;
-    }
-    .topbar span { font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 0.5px; color: var(--accent); font-size: 0.95rem; }
-
-    header.hero {
-        text-align: center;
-        padding: 56px 20px 40px;
-        border-bottom: 1px solid var(--line);
-        background: radial-gradient(ellipse at top, rgba(184,134,11,0.08), transparent 60%);
-    }
-    .eyebrow {
-        font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
-        color: var(--text-soft); margin-bottom: 14px;
-    }
-    h1 {
-        font-family: 'Cinzel', serif;
-        font-weight: 600;
-        font-size: 2.1rem;
-        margin: 0 0 12px;
-        color: var(--text);
-    }
-    h1 em { color: var(--accent); font-style: normal; }
-    .meta { font-size: 0.85rem; color: var(--text-soft); }
-
-    main { max-width: 720px; margin: 0 auto; padding: 40px 22px 90px; }
-
-    .intro {
-        font-size: 1.02rem;
-        color: var(--text-soft);
-        margin-bottom: 46px;
-        padding-bottom: 40px;
-        border-bottom: 1px dashed var(--line);
-    }
-
-    section.article { margin-bottom: 40px; }
-    .num {
-        font-family: 'Cinzel', serif;
-        font-size: 0.75rem;
-        color: var(--accent);
-        letter-spacing: 2px;
-        display: block;
-        margin-bottom: 6px;
-    }
-    h2 {
-        font-family: 'Cinzel', serif;
-        font-weight: 600;
-        font-size: 1.25rem;
-        margin: 0 0 14px;
-        display: flex; align-items: center; gap: 10px;
-    }
-    h2 i { color: var(--accent); font-size: 1.05rem; }
-    p { margin: 0 0 14px; }
-    ul { margin: 0 0 14px; padding-left: 22px; }
-    li { margin-bottom: 8px; }
-
-    .roles {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-        margin: 18px 0 22px;
-    }
-    @media (max-width: 520px) { .roles { grid-template-columns: 1fr; } }
-    .role-card {
-        background: var(--bg-alt);
-        border-radius: 14px;
-        padding: 18px;
-        border: 1px solid var(--line);
-    }
-    .role-card .role-title {
-        font-family: 'Cinzel', serif;
-        color: var(--accent);
-        font-size: 0.95rem;
-        margin-bottom: 8px;
-        display: flex; align-items: center; gap: 8px;
-    }
-    .role-card ul { margin-bottom: 0; padding-left: 18px; font-size: 0.88rem; }
-    .role-card li { margin-bottom: 5px; }
-
-    .callout {
-        background: var(--bg-alt);
-        border-left: 3px solid var(--accent);
-        border-radius: 0 12px 12px 0;
-        padding: 16px 18px;
-        margin: 18px 0;
-        font-size: 0.92rem;
-    }
-    .callout strong { color: var(--accent); }
-
-    .contact-card {
-        background: var(--text);
-        color: #EFE6D8;
-        border-radius: 16px;
-        padding: 26px 24px;
-        margin-top: 10px;
-    }
-    .contact-card h3 {
-        font-family: 'Cinzel', serif;
-        margin: 0 0 6px;
-        color: var(--accent-light);
-        font-size: 1.05rem;
-    }
-    .contact-card p { color: #C9BBA8; margin-bottom: 16px; font-size: 0.9rem; }
-    .contact-row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .contact-row a {
-        display: inline-flex; align-items: center; gap: 8px;
-        background: rgba(232,212,162,0.12);
-        border: 1px solid rgba(232,212,162,0.3);
-        color: #EFE6D8;
-        text-decoration: none;
-        padding: 10px 16px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 500;
-    }
-
-    footer {
-        text-align: center;
-        padding: 30px 20px 50px;
-        font-size: 0.78rem;
-        color: var(--text-soft);
-    }
-    footer a { color: var(--text-soft); text-decoration: underline; }
-</style>
+<title>Términos de Uso | Graduale Nostrum</title>
+<meta name="description" content="Términos y Condiciones de Uso de Graduale Nostrum, la app del Coro Parroquial San Francisco de Asís de Camoapa.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-<div class="topbar">
-    <i class="fas fa-cross" style="color:var(--accent)"></i>
-    <span>GRADUALE NOSTRUM</span>
-</div>
-
-<header class="hero">
-    <div class="eyebrow">Coro Parroquial San Francisco de Asís · Camoapa</div>
-    <h1>Términos y <em>Condiciones</em></h1>
-    <div class="meta">Vigente desde el 26 de julio de 2026 · Aplicación Graduale Nostrum</div>
+<header class="site">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html"><i class="fa-solid fa-scroll" style="color:var(--gold)"></i> Graduale Nostrum <small>Coro San Francisco de Asís · Camoapa</small></a>
+    <nav class="pages">
+      <a href="acercade.html">Acerca de</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html" class="active">Términos de uso</a>
+    </nav>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">Documento legal</div>
+    <h1>Términos y Condiciones de Uso</h1>
+    <p class="lead">Las reglas que rigen el uso de la aplicación Graduale Nostrum y del contenido que ofrece.</p>
+    <p class="meta">Última actualización: 28 de julio de 2026 · Aplicable a la app móvil y al sitio web asociado</p>
+  </div>
+  <div class="staff"></div>
 </header>
 
 <main>
-    <p class="intro">
-        Al usar Graduale Nostrum aceptas estas condiciones. Léelas con calma: describen qué puedes
-        hacer dentro de la app, qué responsabilidades tienes al subir contenido y cómo protegemos
-        el trabajo del coro.
-    </p>
 
-    <section class="article">
-        <span class="num">01</span>
-        <h2><i class="fas fa-book-open"></i> Sobre la aplicación</h2>
-        <p>
-            Graduale Nostrum es una herramienta interna del Coro Parroquial San Francisco de Asís de
-            Camoapa, Nicaragua, para consultar el cantoral, acordes, audios de referencia y la
-            programación de las liturgias. No es un servicio comercial ni está abierto al público
-            general: su uso está reservado a los miembros y colaboradores del coro.
-        </p>
-    </section>
+  <div class="toc">
+    <p>Contenido</p>
+    <ol>
+      <li><a href="#s1">Aceptación de los términos</a></li>
+      <li><a href="#s2">Descripción del servicio</a></li>
+      <li><a href="#s3">Cuentas de usuario</a></li>
+      <li><a href="#s4">Propiedad intelectual</a></li>
+      <li><a href="#s5">Uso aceptable</a></li>
+      <li><a href="#s6">Roles de administración</a></li>
+      <li><a href="#s7">Contenido subido por el usuario</a></li>
+      <li><a href="#s8">Disponibilidad del servicio</a></li>
+      <li><a href="#s9">Exención de garantías</a></li>
+      <li><a href="#s10">Limitación de responsabilidad</a></li>
+      <li><a href="#s11">Terminación de cuentas</a></li>
+      <li><a href="#s12">Enlaces a terceros</a></li>
+      <li><a href="#s13">Menores de edad</a></li>
+      <li><a href="#s14">Ley aplicable y jurisdicción</a></li>
+      <li><a href="#s15">Modificaciones a estos términos</a></li>
+      <li><a href="#s16">Contacto</a></li>
+    </ol>
+  </div>
 
-    <section class="article">
-        <span class="num">02</span>
-        <h2><i class="fas fa-users"></i> Roles dentro de la app</h2>
-        <div class="roles">
-            <div class="role-card">
-                <div class="role-title"><i class="fas fa-user"></i> Miembro del coro</div>
-                <ul>
-                    <li>Consultar el cantoral completo</li>
-                    <li>Ver acordes, letras y audios</li>
-                    <li>Guardar su tono personal por canto</li>
-                    <li>Armar su propio repertorio y favoritos</li>
-                    <li>Recibir notificaciones de cantos nuevos</li>
-                </ul>
-            </div>
-            <div class="role-card">
-                <div class="role-title"><i class="fas fa-user-tie"></i> Director</div>
-                <ul>
-                    <li>Todo lo anterior, y además:</li>
-                    <li>Subir, editar y eliminar cantos</li>
-                    <li>Subir audios y fotografías de partituras</li>
-                    <li>Crear y publicar la programación litúrgica</li>
-                    <li>Administrar roles de otros usuarios</li>
-                </ul>
-            </div>
-        </div>
-        <p>
-            Solo un director puede agregar o modificar el cantoral. Esto asegura que el repertorio
-            oficial del coro se mantenga uniforme y correcto para todos.
-        </p>
-    </section>
+  <section class="clause" id="s1">
+    <h2><span class="num">1</span>Aceptación de los términos</h2>
+    <p>Al descargar, instalar o utilizar <strong>Graduale Nostrum</strong> ("la aplicación", "el Servicio"), aceptas quedar vinculado por estos Términos de Uso y por nuestra <a href="privacidad.html">Política de Privacidad</a>. Si no estás de acuerdo con alguno de estos términos, te pedimos no utilizar la aplicación.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">03</span>
-        <h2><i class="fas fa-file-audio"></i> Contenido subido por directores</h2>
-        <p>
-            Al subir un canto, acorde, letra, audio o fotografía de partitura, el director declara que:
-        </p>
-        <ul>
-            <li>Tiene autorización para compartir ese contenido con el coro (por ejemplo, partituras propias, de dominio público o de uso litúrgico autorizado por la parroquia).</li>
-            <li>El contenido se usa exclusivamente con fines de culto y formación musical del coro, sin fines comerciales.</li>
-            <li>El coro puede editar formato, transportar tonalidades o adaptar el material para su uso interno.</li>
-        </ul>
-        <div class="callout">
-            El cantoral, los audios y las programaciones subidas pertenecen al acervo del Coro
-            Parroquial San Francisco de Asís y se mantienen para uso interno de sus miembros.
-        </div>
-    </section>
+  <section class="clause" id="s2">
+    <h2><span class="num">2</span>Descripción del servicio</h2>
+    <p>Graduale Nostrum es una aplicación gratuita y sin publicidad que ofrece un cantoral digital con letras, acordes, tonalidades y programaciones litúrgicas, orientada originalmente al Coro Parroquial San Francisco de Asís de Camoapa, y disponible al público en general.</p>
+    <p>El Servicio es proporcionado por <strong>Walter Reyes</strong>, desarrollador autónomo, sin fines de lucro asociados a la aplicación.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">04</span>
-        <h2><i class="fas fa-hand-point-right"></i> Uso responsable</h2>
-        <p>Al usar la app, te comprometes a:</p>
-        <ul>
-            <li>Usar tu cuenta de forma personal e intransferible.</li>
-            <li>No compartir el contenido del cantoral fuera del coro sin autorización del director.</li>
-            <li>No subir contenido ofensivo, ajeno al espíritu litúrgico o que no tengas derecho a compartir.</li>
-            <li>Respetar a los demás miembros al usar funciones compartidas (comentarios, programación, etc.).</li>
-        </ul>
-    </section>
+  <section class="clause" id="s3">
+    <h2><span class="num">3</span>Cuentas de usuario</h2>
+    <p>Algunas funciones (guardar tonos personales, favoritos, programaciones, recibir avisos) requieren crear una cuenta mediante correo y contraseña, Google o Facebook. Al registrarte, te comprometes a:</p>
+    <ul>
+      <li>Proporcionar información veraz y mantenerla actualizada.</li>
+      <li>Mantener la confidencialidad de tu contraseña y ser responsable de la actividad realizada desde tu cuenta.</li>
+      <li>Notificarnos si sospechas un uso no autorizado de tu cuenta, escribiendo a <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a>.</li>
+    </ul>
+    <p>Puedes eliminar tu cuenta en cualquier momento desde la sección de perfil dentro de la app.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">05</span>
-        <h2><i class="fas fa-child"></i> Menores de edad</h2>
-        <p>
-            El coro incluye miembros menores de edad. El uso de Graduale Nostrum por un menor debe
-            contar con el conocimiento de sus padres, tutores o del director del coro, quienes pueden
-            solicitar en cualquier momento información o la eliminación de la cuenta del menor.
-        </p>
-    </section>
+  <section class="clause" id="s4">
+    <h2><span class="num">4</span>Propiedad intelectual</h2>
+    <p>El diseño, el código, la marca "Graduale Nostrum" y las funcionalidades de la aplicación son propiedad de su desarrollador, Walter Reyes, y se ofrecen para tu uso personal, litúrgico y no comercial.</p>
+    <p>En cuanto al repertorio de cantos: la aplicación funciona como una recopilación y herramienta de organización del material utilizado por el coro. Los derechos de autor de las letras, melodías y arreglos originales pertenecen a sus respectivos autores y compositores. La inclusión de un canto en la app no implica que su titular renuncie a sus derechos, y su uso dentro de la aplicación se realiza con fines litúrgicos y educativos, sin ánimo de lucro.</p>
+    <p>Si eres titular de derechos sobre algún canto incluido en el catálogo y deseas solicitar su modificación o retiro, contáctanos en <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a>.</p>
+    <p>Queda prohibida la reproducción, distribución comercial o modificación del código y diseño de la aplicación sin autorización previa y por escrito del desarrollador.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">06</span>
-        <h2><i class="fas fa-triangle-exclamation"></i> Disponibilidad y cambios</h2>
-        <p>
-            Trabajamos para mantener la app disponible y funcionando correctamente, pero puede haber
-            interrupciones por mantenimiento o mejoras. El cantoral y las funciones pueden actualizarse
-            sin previo aviso para corregir errores o agregar mejoras.
-        </p>
-    </section>
+  <section class="clause" id="s5">
+    <h2><span class="num">5</span>Uso aceptable</h2>
+    <p>Al usar Graduale Nostrum, te comprometes a no:</p>
+    <ul>
+      <li>Utilizar la aplicación con fines ilícitos o contrarios a la buena fe.</li>
+      <li>Intentar acceder sin autorización a cuentas, datos o funciones administrativas que no te correspondan.</li>
+      <li>Subir contenido ofensivo, difamatorio o que infrinja derechos de terceros (por ejemplo, en fotos de perfil).</li>
+      <li>Interferir con el funcionamiento normal de la aplicación o de sus servicios asociados (Firebase, Supabase).</li>
+      <li>Realizar ingeniería inversa del código de la aplicación con fines de explotación comercial no autorizada.</li>
+    </ul>
+  </section>
 
-    <section class="article">
-        <span class="num">07</span>
-        <h2><i class="fas fa-ban"></i> Suspensión de cuentas</h2>
-        <p>
-            Un director puede suspender o eliminar el acceso de un usuario que incumpla estas
-            condiciones o que ya no forme parte del coro.
-        </p>
-    </section>
+  <section class="clause" id="s6">
+    <h2><span class="num">6</span>Roles de administración</h2>
+    <p>Ciertos usuarios pueden recibir el rol de <strong>administrador</strong>, otorgado a discreción del titular de la aplicación o de los responsables del coro, con permisos para editar el catálogo de cantos, gestionar programaciones y designar a otros administradores. Este rol conlleva la responsabilidad de usarlo de forma diligente y conforme al propósito litúrgico del coro.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">08</span>
-        <h2><i class="fas fa-rotate"></i> Cambios a estos términos</h2>
-        <p>
-            Si actualizamos estas condiciones, publicaremos la nueva versión en esta misma página con
-            su fecha de vigencia. Seguir usando la app después de un cambio implica su aceptación.
-        </p>
-    </section>
+  <section class="clause" id="s7">
+    <h2><span class="num">7</span>Contenido subido por el usuario</h2>
+    <p>Si subes una fotografía de perfil u otro contenido a través de la app, declaras que tienes derecho a hacerlo y otorgas a Graduale Nostrum una licencia limitada para almacenar y mostrar dicho contenido únicamente dentro de la aplicación, con el fin de brindarte el Servicio.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">09</span>
-        <div class="contact-card">
-            <h3><i class="fas fa-envelope-open-text"></i> Contacto</h3>
-            <p>¿Dudas sobre estos términos? Escríbenos:</p>
-            <div class="contact-row">
-                <a href="mailto:wjrg.principal@gmail.com"><i class="fas fa-envelope"></i> wjrg.principal@gmail.com</a>
-                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp (agregar número)</a>
-            </div>
-        </div>
-    </section>
+  <section class="clause" id="s8">
+    <h2><span class="num">8</span>Disponibilidad del servicio</h2>
+    <p>Nos esforzamos por mantener la aplicación disponible y funcionando correctamente, pero no garantizamos un funcionamiento ininterrumpido o libre de errores. Podemos modificar, suspender o discontinuar funciones de la app, temporal o permanentemente, con o sin previo aviso, especialmente por tratarse de un proyecto mantenido de forma independiente.</p>
+  </section>
+
+  <section class="clause" id="s9">
+    <h2><span class="num">9</span>Exención de garantías</h2>
+    <p>Graduale Nostrum se ofrece "tal cual" y "según disponibilidad", sin garantías de ningún tipo, expresas o implícitas, incluyendo garantías de comerciabilidad, idoneidad para un propósito particular o exactitud del contenido del repertorio.</p>
+  </section>
+
+  <section class="clause" id="s10">
+    <h2><span class="num">10</span>Limitación de responsabilidad</h2>
+    <p>En la medida permitida por la ley, el desarrollador no será responsable por daños indirectos, incidentales o consecuentes derivados del uso o la imposibilidad de uso de la aplicación, incluyendo pérdida de datos guardados localmente en tu dispositivo.</p>
+  </section>
+
+  <section class="clause" id="s11">
+    <h2><span class="num">11</span>Terminación de cuentas</h2>
+    <p>Podemos suspender o eliminar cuentas que incumplan estos Términos, especialmente en caso de uso indebido de permisos administrativos o de conductas contrarias a la sección "Uso aceptable". Tú también puedes eliminar tu cuenta en cualquier momento desde la app.</p>
+  </section>
+
+  <section class="clause" id="s12">
+    <h2><span class="num">12</span>Enlaces a terceros</h2>
+    <p>La app puede enlazar a servicios externos (redes sociales del coro, autenticación con Google o Facebook). No somos responsables del contenido, las políticas o las prácticas de dichos servicios de terceros.</p>
+  </section>
+
+  <section class="clause" id="s13">
+    <h2><span class="num">13</span>Menores de edad</h2>
+    <p>La aplicación está disponible para todo público, sin restricción específica de edad, dado que forma parte de la vida de un coro parroquial que incluye integrantes menores de edad. Si un menor utiliza funciones que requieren registro, recomendamos el acompañamiento de un padre, madre o tutor legal, conforme a lo indicado en nuestra <a href="privacidad.html#s11">Política de Privacidad</a>.</p>
+  </section>
+
+  <section class="clause" id="s14">
+    <h2><span class="num">14</span>Ley aplicable y jurisdicción</h2>
+    <p>Estos Términos se rigen por las leyes de la <strong>República de Nicaragua</strong>. Cualquier controversia derivada del uso de la aplicación se someterá, en la medida en que la ley lo permita, a los tribunales competentes del departamento de Boaco, Nicaragua, domicilio del desarrollador.</p>
+  </section>
+
+  <section class="clause" id="s15">
+    <h2><span class="num">15</span>Modificaciones a estos términos</h2>
+    <p>Podemos actualizar estos Términos de Uso ocasionalmente para reflejar cambios en la aplicación o en la normativa aplicable. La versión vigente estará siempre disponible en esta página, con su fecha de última actualización. El uso continuado de la app después de una modificación implica la aceptación de los nuevos términos.</p>
+  </section>
+
+  <section class="clause" id="s16">
+    <h2><span class="num">16</span>Contacto</h2>
+    <p>Para consultas sobre estos Términos de Uso:</p>
+    <div class="contact-card">
+      <h3><i class="fa-solid fa-user"></i> Walter Reyes — Titular de la aplicación</h3>
+      <ul>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></li>
+        <li><i class="fa-solid fa-phone"></i> <a href="tel:+50557641820">+505 5764 1820</a></li>
+        <li><i class="fa-solid fa-location-dot"></i> Camoapa, Boaco, Nicaragua</li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-    Coro Parroquial San Francisco de Asís · Camoapa, Nicaragua<br>
-    <a href="privacidad.html">Política de Privacidad</a>
+<footer class="site">
+  <div class="rule"></div>
+  <p>© 2026 Graduale Nostrum · Coro Parroquial San Francisco de Asís, Camoapa · Desarrollado por Walter Reyes<br>
+  <a href="index.html">Acerca de</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos de uso</a></p>
 </footer>
 
 </body>
 </html>
- 

@@ -3,318 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad — Graduale Nostrum</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-    :root {
-        --bg: #FDFBF7;
-        --bg-alt: #F7F1E4;
-        --text: #3E322E;
-        --text-soft: #7A6A5E;
-        --accent: #B8860B;
-        --accent-light: #E8D4A2;
-        --line: rgba(184,134,11,0.18);
-    }
-    * { box-sizing: border-box; }
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.7;
-    }
-    a { color: var(--accent); }
-
-    .topbar {
-        position: sticky; top: 0; z-index: 10;
-        background: rgba(253,251,247,0.9);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--line);
-        padding: 14px 20px;
-        display: flex; align-items: center; gap: 10px;
-    }
-    .topbar .crest { width: 28px; height: 28px; object-fit: contain; }
-    .topbar span { font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 0.5px; color: var(--accent); font-size: 0.95rem; }
-
-    header.hero {
-        text-align: center;
-        padding: 56px 20px 40px;
-        border-bottom: 1px solid var(--line);
-        background:
-            radial-gradient(ellipse at top, rgba(184,134,11,0.08), transparent 60%);
-    }
-    .eyebrow {
-        font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
-        color: var(--text-soft); margin-bottom: 14px;
-    }
-    h1 {
-        font-family: 'Cinzel', serif;
-        font-weight: 600;
-        font-size: 2.1rem;
-        margin: 0 0 12px;
-        color: var(--text);
-    }
-    h1 em { color: var(--accent); font-style: normal; }
-    .meta {
-        font-size: 0.85rem; color: var(--text-soft);
-    }
-
-    main {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 40px 22px 90px;
-    }
-
-    .intro {
-        font-size: 1.02rem;
-        color: var(--text-soft);
-        margin-bottom: 46px;
-        padding-bottom: 40px;
-        border-bottom: 1px dashed var(--line);
-    }
-
-    section.article { margin-bottom: 40px; }
-    .num {
-        font-family: 'Cinzel', serif;
-        font-size: 0.75rem;
-        color: var(--accent);
-        letter-spacing: 2px;
-        display: block;
-        margin-bottom: 6px;
-    }
-    h2 {
-        font-family: 'Cinzel', serif;
-        font-weight: 600;
-        font-size: 1.25rem;
-        margin: 0 0 14px;
-        display: flex; align-items: center; gap: 10px;
-    }
-    h2 i { color: var(--accent); font-size: 1.05rem; }
-    p { margin: 0 0 14px; }
-    ul { margin: 0 0 14px; padding-left: 22px; }
-    li { margin-bottom: 8px; }
-
-    .datatable {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 18px 0 22px;
-        font-size: 0.88rem;
-        background: var(--bg-alt);
-        border-radius: 12px;
-        overflow: hidden;
-    }
-    .datatable th, .datatable td {
-        text-align: left;
-        padding: 11px 14px;
-        border-bottom: 1px solid var(--line);
-        vertical-align: top;
-    }
-    .datatable th {
-        font-family: 'Cinzel', serif;
-        font-weight: 600;
-        color: var(--accent);
-        font-size: 0.72rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-    .datatable tr:last-child td { border-bottom: none; }
-
-    .callout {
-        background: var(--bg-alt);
-        border-left: 3px solid var(--accent);
-        border-radius: 0 12px 12px 0;
-        padding: 16px 18px;
-        margin: 18px 0;
-        font-size: 0.92rem;
-    }
-    .callout strong { color: var(--accent); }
-
-    .contact-card {
-        background: var(--text);
-        color: #EFE6D8;
-        border-radius: 16px;
-        padding: 26px 24px;
-        margin-top: 10px;
-    }
-    .contact-card h3 {
-        font-family: 'Cinzel', serif;
-        margin: 0 0 6px;
-        color: var(--accent-light);
-        font-size: 1.05rem;
-    }
-    .contact-card p { color: #C9BBA8; margin-bottom: 16px; font-size: 0.9rem; }
-    .contact-row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .contact-row a {
-        display: inline-flex; align-items: center; gap: 8px;
-        background: rgba(232,212,162,0.12);
-        border: 1px solid rgba(232,212,162,0.3);
-        color: #EFE6D8;
-        text-decoration: none;
-        padding: 10px 16px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 500;
-    }
-
-    footer {
-        text-align: center;
-        padding: 30px 20px 50px;
-        font-size: 0.78rem;
-        color: var(--text-soft);
-    }
-    footer a { color: var(--text-soft); text-decoration: underline; }
-</style>
+<title>Política de Privacidad | Graduale Nostrum</title>
+<meta name="description" content="Política de Privacidad de Graduale Nostrum, la app del Coro Parroquial San Francisco de Asís de Camoapa.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-<div class="topbar">
-    <i class="fas fa-cross" style="color:var(--accent)"></i>
-    <span>GRADUALE NOSTRUM</span>
-</div>
-
-<header class="hero">
-    <div class="eyebrow">Coro Parroquial San Francisco de Asís · Camoapa</div>
-    <h1>Política de <em>Privacidad</em></h1>
-    <div class="meta">Vigente desde el 26 de julio de 2026 · Aplicación Graduale Nostrum</div>
+<header class="site">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html"><i class="fa-solid fa-scroll" style="color:var(--gold)"></i> Graduale Nostrum <small>Coro San Francisco de Asís · Camoapa</small></a>
+    <nav class="pages">
+      <a href="acercade.html">Acerca de</a>
+      <a href="privacidad.html" class="active">Privacidad</a>
+      <a href="terminos.html">Términos de uso</a>
+    </nav>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">Documento legal</div>
+    <h1>Política de Privacidad</h1>
+    <p class="lead">Cómo recopilamos, usamos y protegemos tu información dentro de la aplicación Graduale Nostrum.</p>
+    <p class="meta">Última actualización: 28 de julio de 2026 · Aplicable a la app móvil y al sitio web asociado</p>
+  </div>
+  <div class="staff"></div>
 </header>
 
 <main>
-    <p class="intro">
-        Graduale Nostrum es la aplicación del Coro Parroquial San Francisco de Asís de Camoapa,
-        pensada para que sus miembros consulten cantos, acordes, audios y la programación litúrgica.
-        Este documento explica, en lenguaje claro, qué información recopilamos, para qué la usamos
-        y qué control tienes sobre ella.
-    </p>
 
-    <section class="article">
-        <span class="num">01</span>
-        <h2><i class="fas fa-id-badge"></i> Quién trata tus datos</h2>
-        <p>
-            El responsable de esta aplicación es el Coro Parroquial San Francisco de Asís, en Camoapa,
-            Nicaragua. Graduale Nostrum se ofrece exclusivamente a directores, coristas y colaboradores
-            del coro; no es una aplicación de uso público general.
-        </p>
-    </section>
+  <div class="toc">
+    <p>Contenido</p>
+    <ol>
+      <li><a href="#s1">Introducción</a></li>
+      <li><a href="#s2">Responsable del tratamiento</a></li>
+      <li><a href="#s3">Datos que recopilamos</a></li>
+      <li><a href="#s4">Finalidad del tratamiento</a></li>
+      <li><a href="#s5">Base legal</a></li>
+      <li><a href="#s6">Con quién compartimos los datos</a></li>
+      <li><a href="#s7">Transferencia internacional</a></li>
+      <li><a href="#s8">Conservación de los datos</a></li>
+      <li><a href="#s9">Seguridad de la información</a></li>
+      <li><a href="#s10">Tus derechos</a></li>
+      <li><a href="#s11">Menores de edad</a></li>
+      <li><a href="#s12">Notificaciones push</a></li>
+      <li><a href="#s13">Permisos del dispositivo</a></li>
+      <li><a href="#s14">Enlaces y redes de terceros</a></li>
+      <li><a href="#s15">Cambios a esta política</a></li>
+      <li><a href="#s16">Contacto</a></li>
+    </ol>
+  </div>
 
-    <section class="article">
-        <span class="num">02</span>
-        <h2><i class="fas fa-database"></i> Qué información recopilamos</h2>
-        <p>Solo recopilamos lo necesario para que la app funcione:</p>
-        <table class="datatable">
-            <tr><th>Dato</th><th>Cuándo se recopila</th></tr>
-            <tr><td>Correo electrónico y nombre</td><td>Al iniciar sesión (correo, Google o Facebook)</td></tr>
-            <tr><td>Nombre, apellido y género</td><td>Al completar tu perfil</td></tr>
-            <tr><td>Foto de perfil</td><td>Solo si decides subir una</td></tr>
-            <tr><td>Rol dentro del coro (miembro / director)</td><td>Asignado por un administrador</td></tr>
-            <tr><td>Cantos, acordes, letras y audios que subes</td><td>Al crear o editar contenido (si tienes permiso de edición)</td></tr>
-            <tr><td>Fotos tomadas con la cámara</td><td>Solo al usar la función "Cámara" para digitalizar partituras</td></tr>
-            <tr><td>Audio del micrófono</td><td>Solo al grabar una pista o usar el dictado por voz, y solo mientras la función está activa</td></tr>
-            <tr><td>Programaciones y tonalidades personales</td><td>Al armar tu repertorio o guardar tu tono preferido de un canto</td></tr>
-            <tr><td>Token de notificaciones</td><td>Para avisarte cuando se publica un canto nuevo</td></tr>
-        </table>
-        <p>
-            Las preferencias de la app (tema visual, tamaño de letra, tipografía) se guardan únicamente
-            en tu dispositivo y nunca salen de él.
-        </p>
-    </section>
+  <section class="clause" id="s1">
+    <h2><span class="num">1</span>Introducción</h2>
+    <p>Esta Política de Privacidad describe cómo <strong>Graduale Nostrum</strong> ("la aplicación", "la app", "el Servicio") recopila, utiliza, almacena y protege la información de las personas que la usan ("el usuario", "tú"). Al descargar, instalar o utilizar la aplicación, aceptas las prácticas descritas en este documento.</p>
+    <p>Graduale Nostrum es una aplicación gratuita, sin publicidad, desarrollada originalmente para el Coro Parroquial San Francisco de Asís de Camoapa (Boaco, Nicaragua), y disponible al público en general.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">03</span>
-        <h2><i class="fas fa-sliders-h"></i> Para qué usamos tus datos</h2>
-        <ul>
-            <li>Identificarte y darte acceso a tu cuenta y a tu rol dentro del coro.</li>
-            <li>Mostrar y organizar el cantoral, tus programaciones y tu repertorio personal.</li>
-            <li>Guardar los cantos, acordes y audios que tú u otro director suben, para que todo el coro los use.</li>
-            <li>Enviarte notificaciones cuando se agrega un canto nuevo.</li>
-            <li>Mantener la app funcionando de forma segura y corregir errores.</li>
-        </ul>
-        <p>Nunca usamos tus datos con fines publicitarios ni los vendemos a terceros.</p>
-    </section>
+  <section class="clause" id="s2">
+    <h2><span class="num">2</span>Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de los datos personales recopilados a través de la aplicación es:</p>
+    <table class="data-table">
+      <tr><th>Titular</th><td>Walter Reyes, persona natural (desarrollador autónomo)</td></tr>
+      <tr><th>Domicilio</th><td>Camoapa, Boaco, Nicaragua</td></tr>
+      <tr><th>Correo de contacto</th><td><a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></td></tr>
+      <tr><th>Teléfono</th><td>+505 5764 1820</td></tr>
+      <tr><th>Sitio web</th><td><a href="https://waljrg.github.io/Corosfocamoapa/" target="_blank" rel="noopener">waljrg.github.io/Corosfocamoapa</a></td></tr>
+    </table>
+    <p>Para asuntos relacionados específicamente con el contenido litúrgico o el uso interno del coro, también puedes contactar a: <a href="mailto:Corosfocamoapa@gmail.com">Corosfocamoapa@gmail.com</a> (Coro Parroquial San Francisco de Asís – Camoapa).</p>
+  </section>
 
-    <section class="article">
-        <span class="num">04</span>
-        <h2><i class="fas fa-cloud"></i> Con quién compartimos información</h2>
-        <p>Graduale Nostrum funciona sobre estos servicios, que actúan como encargados técnicos del tratamiento:</p>
-        <table class="datatable">
-            <tr><th>Servicio</th><th>Función</th></tr>
-            <tr><td>Firebase (Google)</td><td>Autenticación, base de datos y almacenamiento de audios/fotos</td></tr>
-            <tr><td>Google Sign-In</td><td>Inicio de sesión opcional con tu cuenta de Google</td></tr>
-            <tr><td>Inicio de sesión con Facebook</td><td>Inicio de sesión opcional con tu cuenta de Facebook</td></tr>
-        </table>
-        <p>
-            Estos proveedores solo reciben lo estrictamente necesario para operar (por ejemplo, tu correo
-            para crear la cuenta). No compartimos tu información con anunciantes ni con ningún tercero
-            ajeno al funcionamiento de la app.
-        </p>
-    </section>
+  <section class="clause" id="s3">
+    <h2><span class="num">3</span>Datos que recopilamos</h2>
 
-    <section class="article">
-        <span class="num">05</span>
-        <h2><i class="fas fa-child"></i> Uso por menores de edad</h2>
-        <div class="callout">
-            El coro incluye miembros menores de edad. Cuando un menor use Graduale Nostrum, su cuenta debe
-            crearse con el conocimiento de sus padres, tutores o del director del coro. No recopilamos
-            deliberadamente más datos de un menor que los descritos en la sección 2, y cualquier padre o
-            tutor puede solicitar la revisión o eliminación de esos datos escribiendo a nuestro contacto.
-        </div>
-    </section>
+    <h3>3.1 Datos que proporcionas al crear una cuenta</h3>
+    <p>La creación de cuenta es opcional. Puedes usar el catálogo de cantos sin registrarte. Si decides iniciar sesión (con correo y contraseña, con Google o con Facebook), recopilamos:</p>
+    <ul>
+      <li>Correo electrónico</li>
+      <li>Nombre y apellido</li>
+      <li>Género (si eliges completarlo en tu perfil)</li>
+      <li>Fotografía de perfil, únicamente si eliges subir una desde tu galería o cámara</li>
+      <li>Contraseña (almacenada de forma cifrada por nuestro proveedor de autenticación; nunca la vemos en texto plano)</li>
+    </ul>
 
-    <section class="article">
-        <span class="num">06</span>
-        <h2><i class="fas fa-shield-halved"></i> Seguridad</h2>
-        <p>
-            El acceso a la información del coro está protegido por autenticación y reglas de permisos:
-            solo los directores pueden editar el cantoral y administrar usuarios; el resto de los
-            miembros tiene acceso de consulta. Los datos se almacenan en la infraestructura de Firebase,
-            con cifrado en tránsito.
-        </p>
-    </section>
+    <h3>3.2 Datos de uso dentro de la aplicación</h3>
+    <ul>
+      <li>Tonalidad personal guardada por canto (tu "tono" preferido)</li>
+      <li>Cantos marcados como favoritos</li>
+      <li>Programaciones o listas de cantos que creas u organizas</li>
+      <li>Preferencias de la app: tema visual, tamaño de letra, tipografía y si se muestran acordes</li>
+      <li>Rol dentro de la aplicación (usuario estándar o administrador del coro)</li>
+    </ul>
 
-    <section class="article">
-        <span class="num">07</span>
-        <h2><i class="fas fa-user-check"></i> Tus derechos y eliminación de datos</h2>
-        <p>Puedes en cualquier momento:</p>
-        <ul>
-            <li>Solicitar una copia de los datos asociados a tu cuenta.</li>
-            <li>Corregir tu nombre, foto o datos de perfil desde la propia app.</li>
-            <li>Pedir la eliminación total de tu cuenta y de tus datos personales.</li>
-        </ul>
-        <p>
-            Para eliminar tu cuenta, escríbenos por cualquiera de los medios de contacto abajo indicando
-            el correo con el que te registraste. Procesaremos la solicitud en un plazo razonable y
-            confirmaremos cuando se haya completado.
-        </p>
-    </section>
+    <h3>3.3 Datos técnicos y del dispositivo</h3>
+    <ul>
+      <li>Identificador de notificaciones push (token de Firebase Cloud Messaging), si aceptas recibir avisos</li>
+      <li>Información almacenada localmente en tu dispositivo (caché del catálogo de cantos para uso sin conexión, preferencias, tono personal por canto)</li>
+      <li>Archivos que la app guarda en tu dispositivo cuando exportas o descargas un PDF, en la carpeta de documentos correspondiente</li>
+    </ul>
 
-    <section class="article">
-        <span class="num">08</span>
-        <h2><i class="fas fa-rotate"></i> Cambios a esta política</h2>
-        <p>
-            Si actualizamos esta política, publicaremos la nueva versión en esta misma página con su
-            fecha de vigencia. El uso continuado de la app después de un cambio implica su aceptación.
-        </p>
-    </section>
+    <h3>3.4 Datos que no recopilamos</h3>
+    <p>Graduale Nostrum no recopila tu ubicación geográfica, no accede a tus contactos, no graba audio ni video sin tu acción explícita, y no incluye rastreadores de publicidad ni vende información a terceros con fines comerciales.</p>
+  </section>
 
-    <section class="article">
-        <span class="num">09</span>
-        <div class="contact-card">
-            <h3><i class="fas fa-envelope-open-text"></i> Contacto</h3>
-            <p>¿Dudas sobre tus datos o quieres eliminar tu cuenta? Escríbenos:</p>
-            <div class="contact-row">
-                <a href="mailto:wjrg.principal@gmail.com"><i class="fas fa-envelope"></i> wjrg.principal@gmail.com</a>
-                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp (agregar número)</a>
-            </div>
-        </div>
-    </section>
+  <section class="clause" id="s4">
+    <h2><span class="num">4</span>Finalidad del tratamiento</h2>
+    <p>Usamos la información recopilada para:</p>
+    <ul>
+      <li>Crear y gestionar tu cuenta y tu perfil dentro de la app</li>
+      <li>Sincronizar tus preferencias, tonos personales y favoritos entre sesiones</li>
+      <li>Permitir que los administradores del coro organicen el repertorio y las programaciones</li>
+      <li>Enviarte notificaciones y avisos relevantes del coro, cuando lo autorices</li>
+      <li>Mantener disponible el catálogo de cantos sin conexión a internet</li>
+      <li>Diagnosticar errores técnicos y mejorar el funcionamiento de la app</li>
+    </ul>
+    <p>No utilizamos tus datos para fines publicitarios ni los usamos para elaborar perfiles con fines comerciales.</p>
+  </section>
+
+  <section class="clause" id="s5">
+    <h2><span class="num">5</span>Base legal</h2>
+    <p>El tratamiento de tus datos se basa en tu <strong>consentimiento</strong>, otorgado al crear una cuenta, iniciar sesión o aceptar recibir notificaciones, así como en la necesidad de tratar ciertos datos para poder <strong>prestarte el servicio</strong> que solicitas (por ejemplo, guardar tu tono personal o tus programaciones).</p>
+  </section>
+
+  <section class="clause" id="s6">
+    <h2><span class="num">6</span>Con quién compartimos los datos</h2>
+    <p>No vendemos ni alquilamos tu información personal. Para operar la aplicación, nos apoyamos en los siguientes proveedores tecnológicos ("encargados del tratamiento"), quienes procesan datos en nuestro nombre bajo sus propias políticas de seguridad:</p>
+    <table class="data-table">
+      <tr><th>Proveedor</th><th>Servicio</th><th>Datos involucrados</th></tr>
+      <tr><td>Google Firebase (Google LLC)</td><td>Autenticación de cuenta, base de datos (Firestore) y notificaciones push</td><td>Correo, nombre, contraseña cifrada, datos de perfil, token de notificaciones</td></tr>
+      <tr><td>Google Sign-In / Facebook Login</td><td>Inicio de sesión con terceros (opcional)</td><td>Correo y nombre asociados a tu cuenta de Google o Facebook</td></tr>
+      <tr><td>Supabase</td><td>Almacenamiento de archivos (imágenes y documentos del repertorio)</td><td>Archivos subidos por administradores; no incluye datos personales de usuarios estándar</td></tr>
+      <tr><td>GitHub Pages</td><td>Alojamiento de este sitio web y de la documentación de la app</td><td>Datos técnicos estándar de navegación (sin cookies propias)</td></tr>
+    </table>
+    <p>También podríamos divulgar información si así lo exige la ley, una autoridad competente, o para proteger los derechos, la seguridad o la propiedad de la aplicación, del coro o de sus usuarios.</p>
+  </section>
+
+  <section class="clause" id="s7">
+    <h2><span class="num">7</span>Transferencia internacional de datos</h2>
+    <p>Los proveedores mencionados en la sección anterior (Google Firebase, Supabase) operan infraestructura en servidores ubicados fuera de Nicaragua. Al usar la aplicación, tus datos pueden ser almacenados y procesados en otros países, siempre bajo los estándares de seguridad de dichos proveedores.</p>
+  </section>
+
+  <section class="clause" id="s8">
+    <h2><span class="num">8</span>Conservación de los datos</h2>
+    <ul>
+      <li>Los datos de tu cuenta se conservan mientras la cuenta permanezca activa.</li>
+      <li>Si eliminas tu cuenta desde la propia app, tu información de perfil se elimina de nuestros sistemas, salvo aquella que debamos conservar por obligación legal o para resolver disputas.</li>
+      <li>Los datos almacenados únicamente en tu dispositivo (caché sin conexión, preferencias locales) permanecen allí hasta que borres los datos de la app o la desinstales.</li>
+      <li>El catálogo de cantos y las programaciones del coro se conservan de forma indefinida como parte del repertorio institucional, salvo que un administrador los elimine.</li>
+    </ul>
+  </section>
+
+  <section class="clause" id="s9">
+    <h2><span class="num">9</span>Seguridad de la información</h2>
+    <p>Aplicamos medidas razonables para proteger tu información, incluyendo transmisión cifrada (HTTPS/TLS), autenticación gestionada por proveedores especializados (Firebase Authentication) y control de acceso por roles (solo los administradores designados pueden editar el repertorio o gestionar otros administradores).</p>
+    <div class="callout"><i class="fa-solid fa-shield-halved"></i>&nbsp; Ningún sistema es completamente infalible. Aunque trabajamos para proteger tu información, no podemos garantizar seguridad absoluta frente a accesos no autorizados.</div>
+  </section>
+
+  <section class="clause" id="s10">
+    <h2><span class="num">10</span>Tus derechos</h2>
+    <p>Como usuario, tienes derecho a:</p>
+    <ul>
+      <li><strong>Acceder</strong> a los datos personales que tenemos sobre ti.</li>
+      <li><strong>Rectificar</strong> datos inexactos o desactualizados, editando tu perfil dentro de la app.</li>
+      <li><strong>Eliminar</strong> tu cuenta y los datos asociados a ella, desde la opción disponible en Ajustes de cuenta dentro de la app, o solicitándolo por correo.</li>
+      <li><strong>Oponerte</strong> al envío de notificaciones push, desactivándolas desde los permisos de tu dispositivo o los ajustes de la app.</li>
+      <li><strong>Retirar tu consentimiento</strong> en cualquier momento, sin que ello afecte la licitud del tratamiento previo.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a> indicando tu nombre y el correo asociado a tu cuenta. Responderemos en un plazo razonable.</p>
+  </section>
+
+  <section class="clause" id="s11">
+    <h2><span class="num">11</span>Menores de edad</h2>
+    <p>Graduale Nostrum está dirigida al público en general, incluyendo integrantes del coro que pueden ser menores de edad. La aplicación no impone una restricción de edad para su uso.</p>
+    <p>Si un menor de edad crea una cuenta o utiliza funciones que impliquen el tratamiento de datos personales (registro, foto de perfil, notificaciones), <strong>recomendamos el acompañamiento de un padre, madre o tutor legal</strong>. Si eres padre, madre o tutor y deseas revisar, corregir o eliminar la información de un menor a tu cargo, contáctanos en <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a>; atenderemos la solicitud con prioridad.</p>
+  </section>
+
+  <section class="clause" id="s12">
+    <h2><span class="num">12</span>Notificaciones push</h2>
+    <p>Si aceptas recibir notificaciones, la app registra un identificador de dispositivo (token) a través de Firebase Cloud Messaging, usado exclusivamente para enviarte avisos del coro (por ejemplo, cambios de horario o anuncios importantes). Puedes desactivarlas en cualquier momento desde los ajustes de notificaciones de tu dispositivo.</p>
+  </section>
+
+  <section class="clause" id="s13">
+    <h2><span class="num">13</span>Permisos del dispositivo</h2>
+    <p>Dependiendo de las funciones que uses, la app puede solicitar los siguientes permisos:</p>
+    <ul>
+      <li><strong>Almacenamiento / archivos:</strong> para guardar y compartir hojas de canto o programaciones exportadas en PDF.</li>
+      <li><strong>Galería o cámara:</strong> únicamente si eliges subir una foto de perfil.</li>
+      <li><strong>Notificaciones:</strong> para mostrarte avisos del coro.</li>
+    </ul>
+    <p>Todos estos permisos son solicitados en el momento en que intentas usar la función correspondiente, y puedes denegarlos sin que ello impida el uso general de la app.</p>
+  </section>
+
+  <section class="clause" id="s14">
+    <h2><span class="num">14</span>Enlaces y redes de terceros</h2>
+    <p>La app y este sitio pueden incluir enlaces a redes sociales del coro (Facebook, TikTok). Estas plataformas tienen sus propias políticas de privacidad, ajenas a Graduale Nostrum, por lo que te recomendamos revisarlas si decides visitarlas.</p>
+  </section>
+
+  <section class="clause" id="s15">
+    <h2><span class="num">15</span>Cambios a esta política</h2>
+    <p>Podemos actualizar esta Política de Privacidad periódicamente para reflejar mejoras o cambios en la aplicación. Publicaremos cualquier cambio en esta misma página, indicando la fecha de la última actualización. Te recomendamos revisarla ocasionalmente.</p>
+  </section>
+
+  <section class="clause" id="s16">
+    <h2><span class="num">16</span>Contacto</h2>
+    <p>Si tienes dudas, comentarios o deseas ejercer tus derechos sobre tus datos personales, contáctanos:</p>
+    <div class="contact-card">
+      <h3><i class="fa-solid fa-user"></i> Walter Reyes — Titular de la aplicación</h3>
+      <ul>
+        <li><i class="fa-solid fa-envelope"></i> <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></li>
+        <li><i class="fa-solid fa-phone"></i> <a href="tel:+50557641820">+505 5764 1820</a></li>
+        <li><i class="fa-solid fa-location-dot"></i> Camoapa, Boaco, Nicaragua</li>
+      </ul>
+    </div>
+  </section>
+
 </main>
 
-<footer>
-    Coro Parroquial San Francisco de Asís · Camoapa, Nicaragua<br>
-    <a href="terminos.html">Términos y Condiciones de Uso</a>
+<footer class="site">
+  <div class="rule"></div>
+  <p>© 2026 Graduale Nostrum · Coro Parroquial San Francisco de Asís, Camoapa · Desarrollado por Walter Reyes<br>
+  <a href="index.html">Acerca de</a> · <a href="privacidad.html">Privacidad</a> · <a href="terminos.html">Términos de uso</a></p>
 </footer>
 
 </body>
 </html>
- 
