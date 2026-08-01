@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#2D241E">
+<title>Graduale Nostrum</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #2D241E;
+    --surface: #362B24;
+    --text: #DCCFBF;
+    --text-dim: #A99885;
+    --accent: #C89466;
+    --accent-strong: #E8D4A2;
+    --line: rgba(200, 148, 102, 0.35);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+  .stave {
+    width: 100%;
+    height: 46px;
+    margin-bottom: 28px;
+    opacity: 0.9;
+  }
+  .stave line { stroke: var(--line); stroke-width: 1; }
+  .stave circle { fill: var(--accent-strong); }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    color: var(--accent-strong);
+    margin: 0 0 6px;
+  }
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 0 0 18px;
+  }
+  .canto-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+  }
+  .canto-titulo {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  .canto-tono {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin: 0;
+  }
+  .canto-vacio {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0;
+  }
+  p.mensaje {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin: 0 0 26px;
+  }
+  a.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    background: var(--accent);
+    color: #1F1915;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 14px;
+    letter-spacing: 0.01em;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  a.btn:active { transform: scale(0.98); }
+  .nota {
+    margin-top: 18px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <svg class="stave" viewBox="0 0 300 46" preserveAspectRatio="none">
+      <line x1="0" y1="6"  x2="300" y2="6" />
+      <line x1="0" y1="16" x2="300" y2="16" />
+      <line x1="0" y1="26" x2="300" y2="26" />
+      <line x1="0" y1="36" x2="300" y2="36" />
+      <circle cx="60"  cy="16" r="3.4" />
+      <circle cx="110" cy="26" r="3.4" />
+      <circle cx="160" cy="6"  r="3.4" />
+      <circle cx="210" cy="36" r="3.4" />
+      <circle cx="255" cy="16" r="3.4" />
+    </svg>
+
+    <p class="eyebrow">Graduale Nostrum</p>
+    <h1>Te han compartido un canto</h1>
+
+    <div class="canto-box" id="cantoBox">
+      <p class="canto-vacio">Instala la app para verlo</p>
+    </div>
+
+    <p class="mensaje" id="mensaje">
+      Para abrir este canto necesitas la app Graduale Nostrum instalada en tu teléfono.
+    </p>
+
+    <a class="btn" id="btnInstalar" href="#">Instalar la App</a>
+
+    <p class="nota">
+      Si ya tienes la app instalada, prueba a abrir el enlace de nuevo desde donde te lo compartieron —
+      puede que necesites reinstalarla una vez para que los enlaces abran directo.
+    </p>
+  </div>
+
+<script>
+  // ===== CONFIGURA AQUÍ =====
+  const APK_URL = "https://github.com/Waljrg/graduale-links/releases/latest/download/Gradualenostrum.apk";
+  // ===========================
+
+  document.getElementById('btnInstalar').href = APK_URL;
+
+  const params = new URLSearchParams(window.location.search);
+  const titulo = params.get('titulo');
+  const tono = params.get('tono');
+
+  if (titulo) {
+    const box = document.getElementById('cantoBox');
+    box.innerHTML = `
+      <p class="canto-titulo">${decodeURIComponent(titulo)}</p>
+      ${tono ? `<p class="canto-tono">Tono: ${decodeURIComponent(tono)}</p>` : ''}
+    `;
+  }
+
+  // Intento forzado de abrir la app — necesario porque WhatsApp, Instagram, etc.
+  // abren los links en su propio navegador integrado, lo que evita que Android
+  // detecte automáticamente que la app puede manejar el enlace.
+  const id = params.get('id');
+  if (id) {
+    const fallbackUrl = window.location.href;
+    const intentUrl = `intent://waljrg.github.io/graduale-links/canto/${window.location.search}#Intent;scheme=https;package=com.waljrg.graduale;S.browser_fallback_url=${encodeURIComponent(fallbackUrl)};end`;
+    window.location.href = intentUrl;
+  }
+</script>
+</body>
+</html>
