@@ -2,167 +2,801 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#2D241E">
-<title>Graduale Nostrum</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Graduale Nostrum – Cantoral digital católico</title>
+<meta name="description" content="Graduale Nostrum — cantoral digital del Coro Parroquial San Francisco de Asís, Camoapa. Cantos, acordes, tonalidades y programaciones. Gratis y sin publicidad.">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #2D241E;
     --surface: #362B24;
+    --surface-2: #3F332B;
     --text: #DCCFBF;
     --text-dim: #A99885;
     --accent: #C89466;
     --accent-strong: #E8D4A2;
     --line: rgba(200, 148, 102, 0.35);
+    --line-soft: rgba(200, 148, 102, 0.18);
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    min-height: 100vh;
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .card {
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
-  }
-  .stave {
-    width: 100%;
-    height: 46px;
-    margin-bottom: 28px;
-    opacity: 0.9;
-  }
-  .stave line { stroke: var(--line); stroke-width: 1; }
-  .stave circle { fill: var(--accent-strong); }
-  h1 {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 0.03em;
-    color: var(--accent-strong);
-    margin: 0 0 6px;
-  }
-  .eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 0 0 18px;
-  }
-  .canto-box {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 20px 22px;
-    margin-bottom: 28px;
-  }
-  .canto-titulo {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--text);
-    margin: 0 0 4px;
-  }
-  .canto-tono {
-    font-size: 0.85rem;
-    color: var(--accent);
-    margin: 0;
-  }
-  .canto-vacio {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    margin: 0;
-  }
-  p.mensaje {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin: 0 0 26px;
-  }
-  a.btn {
-    display: inline-block;
-    width: 100%;
-    padding: 15px;
-    background: var(--accent);
-    color: #1F1915;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    border-radius: 14px;
-    letter-spacing: 0.01em;
-    transition: transform 0.15s ease, background 0.15s ease;
-  }
-  a.btn:active { transform: scale(0.98); }
-  .nota {
-    margin-top: 18px;
-    font-size: 0.75rem;
-    color: var(--text-dim);
     line-height: 1.5;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: var(--accent-strong); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Barra superior ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(45,36,30,.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .topbar .wrap { display: flex; align-items: center; gap: 10px; height: 52px; }
+  .topbar i { color: var(--accent); }
+  .topbar span { font-family: 'Cinzel', serif; font-weight: 700; font-size: .95rem; letter-spacing: .04em; color: var(--accent-strong); }
+
+  /* ---------- Canto compartido ---------- */
+  .shared { display: none; margin-top: 18px; }
+  .shared.on { display: block; }
+  .shared .box {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .shared .box > i { font-size: 1.4rem; color: var(--accent); }
+  .shared small { display: block; color: var(--text-dim); font-size: .75rem; }
+  .shared strong { display: block; color: var(--text); font-size: 1.05rem; font-weight: 600; }
+  .shared em { font-style: normal; color: var(--accent); font-size: .85rem; }
+
+  /* ---------- Cabecera de la app ---------- */
+  .head { display: flex; gap: 18px; align-items: center; padding: 22px 0 6px; }
+  .app-icon {
+    width: 92px; height: 92px; flex: none; border-radius: 22px; object-fit: cover;
+    background: var(--surface); border: 1px solid var(--line);
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  }
+  .head h1 {
+    font-family: 'Cinzel', serif; font-weight: 700;
+    font-size: 1.55rem; line-height: 1.15; letter-spacing: .02em;
+    color: var(--accent-strong); margin: 0 0 4px;
+  }
+  .dev { color: var(--accent); font-weight: 600; font-size: .95rem; margin: 0; }
+  .sub { color: var(--text-dim); font-size: .8rem; margin: 2px 0 0; }
+
+  /* ---------- Fila de datos ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    margin: 20px 0 4px; padding: 14px 0;
+    border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+  }
+  .stat { text-align: center; padding: 0 4px; border-left: 1px solid var(--line-soft); min-width: 0; }
+  .stat:first-child { border-left: 0; }
+  .stat .v { font-weight: 600; font-size: .98rem; color: var(--text); height: 26px; display: flex; align-items: center; justify-content: center; gap: 4px; white-space: nowrap; }
+  .stat .l { font-size: .72rem; color: var(--text-dim); margin-top: 3px; line-height: 1.25; }
+  .rating-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border: 2px solid var(--accent-strong); border-radius: 6px;
+    font-size: .6rem; font-weight: 700; color: var(--accent-strong); letter-spacing: -.02em;
+  }
+  .skeleton { display: inline-block; width: 46px; height: 12px; border-radius: 6px; background: var(--surface-2); }
+
+  /* ---------- Botón ---------- */
+  .cta { padding: 16px 0 6px; }
+  a.btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 15px;
+    background: var(--accent); color: #1F1915;
+    font-weight: 600; font-size: 1rem; text-decoration: none;
+    border-radius: 14px; letter-spacing: .01em;
+    transition: transform .15s ease, background .15s ease;
+  }
+  a.btn:active { transform: scale(.98); }
+  a.btn:focus-visible, button:focus-visible, .shot:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; }
+  .cta-note { font-size: .74rem; color: var(--text-dim); margin: 10px 2px 0; line-height: 1.5; text-align: center; }
+
+  /* ---------- Capturas ---------- */
+  .shots {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x proximity;
+    padding: 18px 20px 10px; margin: 0 -20px; scrollbar-width: none;
+  }
+  .shots::-webkit-scrollbar { display: none; }
+  .shot {
+    flex: none; height: 300px; aspect-ratio: 9 / 16; scroll-snap-align: start;
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--line);
+    background: var(--surface); padding: 0; cursor: zoom-in;
+  }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- Secciones ---------- */
+  section.blk { padding: 22px 0 4px; }
+  .blk-head {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; background: none; border: 0; color: inherit; font: inherit;
+    padding: 0; text-align: left; cursor: default;
+  }
+  button.blk-head { cursor: pointer; }
+  .blk-head h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent-strong); margin: 0; letter-spacing: .02em; }
+  .blk-head .arrow {
+    width: 38px; height: 38px; border-radius: 50%; flex: none;
+    display: grid; place-items: center; color: var(--accent);
+    border: 1px solid var(--line); background: var(--surface);
+  }
+  .about-txt { color: var(--text); font-size: .93rem; line-height: 1.65; margin: 12px 0 0; }
+  .about-txt.dim { color: var(--text-dim); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px;
+    font-size: .82rem; color: var(--text); background: var(--surface);
+  }
+
+  .nov { margin-top: 12px; }
+  .nov p { color: var(--text); font-size: .93rem; line-height: 1.65; margin: 0 0 8px; }
+  .nov ul { margin: 0 0 8px; padding-left: 20px; }
+  .nov li { color: var(--text); font-size: .93rem; line-height: 1.65; margin-bottom: 4px; }
+  .nov li::marker { color: var(--accent); }
+
+  .info { margin-top: 12px; background: var(--surface); border: 1px solid var(--line-soft); border-radius: 18px; padding: 4px 18px; }
+  .info .row { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-top: 1px solid var(--line-soft); font-size: .9rem; }
+  .info .row:first-child { border-top: 0; }
+  .info .k { color: var(--text-dim); }
+  .info .val { text-align: right; color: var(--text); word-break: break-word; }
+
+  footer { text-align: center; padding: 30px 20px 40px; color: var(--text-dim); font-size: .78rem; line-height: 1.7; }
+  footer a { color: var(--text-dim); }
+
+  /* ---------- Hoja "Acerca de esta app" ---------- */
+  .sheet {
+    position: fixed; inset: 0; z-index: 50; background: var(--bg);
+    transform: translateY(100%); visibility: hidden;
+    transition: transform .28s ease, visibility 0s linear .28s;
+    display: flex; flex-direction: column;
+  }
+  .sheet.open { transform: none; visibility: visible; transition: transform .28s ease; }
+  .sheet-bar {
+    display: flex; align-items: center; gap: 12px; flex: none;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 16px 10px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .sheet-bar button {
+    width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--surface);
+    color: var(--accent-strong); font-size: 1rem; cursor: pointer;
+  }
+  .sheet-bar span { font-family: 'Cinzel', serif; font-weight: 700; color: var(--accent-strong); }
+  .sheet-body { overflow-y: auto; flex: 1; padding: 8px 0 40px; -webkit-overflow-scrolling: touch; }
+  .sheet .wrap { padding-top: 6px; }
+  .sheet .eyebrow { font-family: 'Cinzel', serif; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); margin: 16px 0 8px; }
+  .sheet h1 { font-family: 'Cinzel', serif; font-size: 1.45rem; line-height: 1.25; color: var(--accent-strong); margin: 0 0 12px; }
+  .sheet .lead { color: var(--text-dim); font-size: .98rem; line-height: 1.65; margin: 0 0 8px; }
+  .sheet .staff { height: 30px; margin: 18px 0 4px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: repeating-linear-gradient(to bottom, transparent 0 9px, var(--line-soft) 9px 10px); }
+  .clause { padding: 20px 0 4px; }
+  .clause h2 { font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--accent-strong); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+  .clause h2 .ico { width: 30px; height: 30px; flex: none; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--accent); font-size: .75rem; }
+  .clause p { font-size: .93rem; line-height: 1.7; color: var(--text); margin: 0 0 10px; }
+  .clause strong { color: var(--accent-strong); font-weight: 600; }
+  .grid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fcard { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; }
+  .fcard i { color: var(--accent); font-size: 1.1rem; }
+  .fcard h4 { margin: 8px 0 4px; font-size: .88rem; color: var(--text); }
+  .fcard p { margin: 0; font-size: .78rem; line-height: 1.5; color: var(--text-dim); }
+  .contact-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-top: 8px; }
+  .contact-card h3 { margin: 0 0 10px; font-size: .95rem; color: var(--accent-strong); display: flex; gap: 8px; align-items: center; }
+  .contact-card ul { list-style: none; margin: 0; padding: 0; }
+  .contact-card li { display: flex; gap: 10px; align-items: baseline; font-size: .88rem; padding: 5px 0; word-break: break-word; }
+  .contact-card li i { color: var(--accent); width: 16px; text-align: center; flex: none; }
+
+  /* ---------- Visor de capturas ---------- */
+  .lb {
+    position: fixed; inset: 0; z-index: 100; background: #120E0B;
+    display: none; flex-direction: column;
+  }
+  .lb.open { display: flex; }
+  .lb-top {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px;
+    background: linear-gradient(to bottom, rgba(18,14,11,.85), transparent);
+  }
+  .lb-top button { width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgba(54,43,36,.9); color: var(--accent-strong); font-size: 1.05rem; cursor: pointer; }
+  .lb-count { color: var(--text); font-size: .85rem; background: rgba(54,43,36,.9); padding: 6px 12px; border-radius: 999px; }
+  .lb-track { flex: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .lb-track::-webkit-scrollbar { display: none; }
+  .lb-slide { flex: none; width: 100%; height: 100%; scroll-snap-align: center; display: grid; place-items: center; padding: 56px 0 env(safe-area-inset-bottom, 0px); }
+  .lb-slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  /* ---------- Información dentro de Acerca de ---------- */
+  .info button.row {
+    width: 100%; background: none; border: 0; border-top: 1px solid var(--line-soft);
+    color: inherit; font: inherit; font-size: .9rem; text-align: left; cursor: pointer; align-items: center;
+  }
+  .info button.row .val { display: flex; align-items: center; gap: 10px; color: var(--accent-strong); }
+  .info button.row .val i { color: var(--accent); font-size: .8rem; }
+  #permSheet { z-index: 60; }
+  .perm { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line-soft); }
+  .perm:first-of-type { border-top: 0; }
+  .perm .pi { width: 42px; height: 42px; flex: none; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; color: var(--accent); }
+  .perm h4 { margin: 0 0 3px; font-size: .98rem; color: var(--accent-strong); }
+  .perm p { margin: 0; font-size: .86rem; line-height: 1.6; color: var(--text-dim); }
+  .perm-note { margin-top: 10px; font-size: .8rem; color: var(--text-dim); line-height: 1.6; }
+  .compat-status { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; }
+  .compat-status > i { font-size: 1.4rem; flex: none; }
+  .compat-status.ok > i { color: #9BC28A; }
+  .compat-status.bad > i { color: #D98B7A; }
+  .compat-status strong { display: block; color: var(--text); font-size: .95rem; font-weight: 600; }
+  .compat-status small { display: block; color: var(--text-dim); font-size: .78rem; line-height: 1.5; margin-top: 2px; }
+
+  @media (min-width: 640px) {
+    .shot { height: 380px; }
+    .head h1 { font-size: 1.8rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .sheet, .sheet.open, a.btn { transition: none; }
   }
 </style>
 </head>
 <body>
-  <div class="card">
-    <svg class="stave" viewBox="0 0 300 46" preserveAspectRatio="none">
-      <line x1="0" y1="6"  x2="300" y2="6" />
-      <line x1="0" y1="16" x2="300" y2="16" />
-      <line x1="0" y1="26" x2="300" y2="26" />
-      <line x1="0" y1="36" x2="300" y2="36" />
-      <circle cx="60"  cy="16" r="3.4" />
-      <circle cx="110" cy="26" r="3.4" />
-      <circle cx="160" cy="6"  r="3.4" />
-      <circle cx="210" cy="36" r="3.4" />
-      <circle cx="255" cy="16" r="3.4" />
-    </svg>
 
-    <p class="eyebrow">Graduale Nostrum</p>
-    <h1>Te han compartido un canto</h1>
+<div class="topbar">
+  <div class="wrap"><i class="fa-solid fa-scroll"></i><span>Graduale Nostrum</span></div>
+</div>
 
-    <div class="canto-box" id="cantoBox">
-      <p class="canto-vacio">Instala la app para verlo</p>
+<main class="wrap">
+
+  <!-- Canto compartido (solo aparece si el enlace trae ?titulo=) -->
+  <div class="shared" id="shared">
+    <div class="box">
+      <i class="fa-solid fa-music"></i>
+      <div>
+        <small>Te han compartido un canto</small>
+        <strong id="sharedTitulo"></strong>
+        <em id="sharedTono"></em>
+      </div>
     </div>
-
-    <p class="mensaje" id="mensaje">
-      Para abrir este canto necesitas la app Graduale Nostrum instalada en tu teléfono.
-    </p>
-
-    <a class="btn" id="btnInstalar" href="#">Instalar la App</a>
-
-    <p class="nota">
-      Si ya tienes la app instalada, prueba a abrir el enlace de nuevo desde donde te lo compartieron —
-      puede que necesites reinstalarla una vez para que los enlaces abran directo.
-    </p>
   </div>
+
+  <!-- Cabecera -->
+  <div class="head">
+    <img class="app-icon" src="icon.svg" alt="Icono de Graduale Nostrum" width="92" height="92">
+    <div>
+      <h1>Graduale Nostrum</h1>
+      <p class="dev">Waljrg</p>
+      <p class="sub">Gratis · Sin publicidad</p>
+    </div>
+  </div>
+
+  <!-- Datos -->
+  <div class="stats" role="list">
+    <div class="stat" role="listitem">
+      <div class="v" id="stDescargas"><span class="skeleton"></span></div>
+      <div class="l">Descargas</div>
+    </div>
+    <div class="stat" role="listitem">
+      <div class="v"><span class="rating-badge" aria-hidden="true">TP</span></div>
+      <div class="l">Apto para todo público<br>Católico</div>
+    </div>
+    <div class="stat" role="listitem">
+      <div class="v" id="stTamano"><span class="skeleton"></span></div>
+      <div class="l">Tamaño</div>
+    </div>
+    <div class="stat" role="listitem">
+      <div class="v" id="stVersion"><span class="skeleton"></span></div>
+      <div class="l">Versión</div>
+    </div>
+  </div>
+
+  <!-- Botón -->
+  <div class="cta">
+    <a class="btn" id="btnInstalar" href="#"><i class="fa-solid fa-download"></i> Descargar</a>
+    <p class="cta-note">Si Android te avisa por instalar desde fuera de Play Store, permite la instalación desde este navegador. Si ya tienes la app y el enlace no abre directo, reinstálala una vez.</p>
+  </div>
+
+  <!-- Capturas -->
+  <div class="shots" id="shots" aria-label="Capturas de pantalla"></div>
+
+  <!-- Acerca de -->
+  <section class="blk">
+    <button class="blk-head" id="btnAcerca" aria-haspopup="dialog">
+      <h2>Acerca de esta app</h2>
+      <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+    </button>
+    <p class="about-txt">Graduale Nostrum reúne el repertorio del Coro Parroquial San Francisco de Asís de Camoapa en una sola app: cantos, acordes, tonalidades y programaciones, siempre a la mano.</p>
+    <p class="about-txt dim">Actualizada el <span id="abFecha">—</span></p>
+    <div class="chips" aria-label="Categorías">
+      <span class="chip">Católico</span>
+      <span class="chip">Coro</span>
+      <span class="chip">Litúrgicos</span>
+      <span class="chip">Misal</span>
+    </div>
+  </section>
+
+  <!-- Novedades (texto del release en GitHub) -->
+  <section class="blk" id="secNovedades" hidden>
+    <div class="blk-head"><h2>Novedades</h2></div>
+    <p class="about-txt dim" id="novVersion"></p>
+    <div class="nov" id="novTxt"></div>
+  </section>
+
+  <!-- Información -->
+  <section class="blk">
+    <div class="blk-head"><h2>Información de la app</h2></div>
+    <div class="info">
+      <div class="row"><span class="k">Versión</span><span class="val" id="inVersion">—</span></div>
+      <div class="row"><span class="k">Actualizada el</span><span class="val" id="inFecha">—</span></div>
+      <div class="row"><span class="k">Tamaño</span><span class="val" id="inTamano">—</span></div>
+      <div class="row"><span class="k">Descargas</span><span class="val" id="inDescargas">—</span></div>
+      <div class="row"><span class="k">Clasificación</span><span class="val">Apto para todo público · Católico</span></div>
+      <div class="row"><span class="k">Desarrollador</span><span class="val">Waljrg<br><a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></span></div>
+      <div class="row"><span class="k">Política de privacidad</span><span class="val"><a href="https://waljrg.github.io/graduale-links/privacidad.html">Ver</a></span></div>
+      <div class="row"><span class="k">Términos de uso</span><span class="val"><a href="https://waljrg.github.io/graduale-links/terminos.html">Ver</a></span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Graduale Nostrum · Coro Parroquial San Francisco de Asís, Camoapa<br>
+  Desarrollado por Waljrg ·
+  <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a><br>
+  <a href="https://waljrg.github.io/graduale-links/privacidad.html">Privacidad</a> · <a href="https://waljrg.github.io/graduale-links/terminos.html">Términos de uso</a>
+</footer>
+
+<!-- Hoja: Acerca de esta app (texto de acercade.html) -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-bar">
+    <button id="sheetClose" aria-label="Volver"><i class="fa-solid fa-arrow-left"></i></button>
+    <span id="sheetTitle">Acerca de esta app</span>
+  </div>
+  <div class="sheet-body">
+    <div class="wrap">
+      <div class="eyebrow">Acerca de la aplicación</div>
+      <h1>Un cantoral digital para acompañar la liturgia</h1>
+      <p class="lead">Graduale Nostrum reúne el repertorio del Coro Parroquial San Francisco de Asís de Camoapa en una sola app: cantos, acordes, tonalidades y programaciones, siempre a la mano.</p>
+      <div class="staff"></div>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-book-open"></i></span>¿Qué es Graduale Nostrum?</h2>
+        <p><strong>Graduale Nostrum</strong> es una aplicación gratuita, sin publicidad, creada originalmente para uso del <strong>Coro Parroquial San Francisco de Asís de Camoapa, Boaco (Nicaragua)</strong>, con el fin de organizar y facilitar el acceso al repertorio de cantos utilizados en la liturgia: letras, acordes, tonalidades y el orden de las celebraciones.</p>
+        <p>Aunque nació como una herramienta interna del coro, la aplicación está abierta a evolucionar hacia un público más amplio, manteniendo siempre su espíritu de servicio a la música litúrgica.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-music"></i></span>Funcionalidades principales</h2>
+        <div class="grid-cards">
+          <div class="fcard"><i class="fa-solid fa-book-bible"></i><h4>Catálogo de cantos</h4><p>Letras y acordes organizados por categoría, con búsqueda y filtros.</p></div>
+          <div class="fcard"><i class="fa-solid fa-sliders"></i><h4>Transposición de tono</h4><p>Cambia la tonalidad de cada canto y guarda tu tono personal.</p></div>
+          <div class="fcard"><i class="fa-solid fa-calendar-days"></i><h4>Programaciones</h4><p>Organiza el orden de cantos para cada celebración o ensayo.</p></div>
+          <div class="fcard"><i class="fa-solid fa-file-pdf"></i><h4>Exportación en PDF</h4><p>Genera y comparte hojas de canto o programaciones en PDF.</p></div>
+          <div class="fcard"><i class="fa-solid fa-wifi"></i><h4>Modo sin conexión</h4><p>El repertorio queda disponible en el dispositivo aunque no haya internet.</p></div>
+          <div class="fcard"><i class="fa-solid fa-bell"></i><h4>Avisos y notificaciones</h4><p>Recibe avisos importantes del coro directamente en la app.</p></div>
+          <div class="fcard"><i class="fa-solid fa-palette"></i><h4>Temas visuales</h4><p>Modo claro, oscuro, sepia y pergamino para leer con comodidad.</p></div>
+          <div class="fcard"><i class="fa-solid fa-user-shield"></i><h4>Cuenta personal</h4><p>Inicio de sesión opcional para guardar preferencias y tonos.</p></div>
+        </div>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-tag"></i></span>Costo y publicidad</h2>
+        <p>Graduale Nostrum es <strong>completamente gratuita</strong>. No contiene anuncios publicitarios, compras dentro de la aplicación ni modelos de suscripción. Fue desarrollada como un servicio para la comunidad parroquial y, en general, para todo público interesado en el canto litúrgico.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-church"></i></span>El coro</h2>
+        <p>Graduale Nostrum acompaña el servicio musical del <strong>Coro Parroquial San Francisco de Asís – Camoapa</strong>, cuya labor es animar la liturgia de la parroquia con canto y música.</p>
+        <div class="contact-card">
+          <h3><i class="fa-solid fa-people-group"></i> Coro Parroquial San Francisco de Asís – Camoapa</h3>
+          <ul>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:Corosfocamoapa@gmail.com">Corosfocamoapa@gmail.com</a></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+50582153417">8215 3417</a></li>
+            <li><i class="fa-brands fa-facebook"></i> <a href="https://www.facebook.com/Corosfocamoapa" target="_blank" rel="noopener">Facebook: Corosfocamoapa</a></li>
+            <li><i class="fa-brands fa-tiktok"></i> <a href="https://www.tiktok.com/@Corosfocamoapa" target="_blank" rel="noopener">TikTok: Corosfocamoapa</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-code"></i></span>Desarrollador</h2>
+        <p>La aplicación es diseñada y mantenida de forma independiente por <strong>Walter Reyes</strong>, desarrollador autónomo radicado en Camoapa, Boaco, Nicaragua.</p>
+        <div class="contact-card">
+          <h3><i class="fa-solid fa-user"></i> Walter Reyes</h3>
+          <ul>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+50557641820">+505 5764 1820</a></li>
+            <li><i class="fa-solid fa-location-dot"></i> Camoapa, Boaco, Nicaragua</li>
+            <li><i class="fa-solid fa-globe"></i> <a href="https://waljrg.github.io/Corosfocamoapa/" target="_blank" rel="noopener">waljrg.github.io/Corosfocamoapa</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-scale-balanced"></i></span>Documentos legales</h2>
+        <p>Antes de usar la aplicación, te invitamos a leer nuestra <a href="https://waljrg.github.io/graduale-links/privacidad.html">Política de Privacidad</a> y nuestros <a href="https://waljrg.github.io/graduale-links/terminos.html">Términos de Uso</a>, donde se explica en detalle qué información se recopila y bajo qué condiciones se ofrece el servicio.</p>
+      </section>
+
+      <section class="clause">
+        <h2><span class="ico"><i class="fa-solid fa-circle-info"></i></span>Información de la app</h2>
+        <div class="info">
+          <div class="row"><span class="k">Versión</span><span class="val" id="sInVersion">—</span></div>
+          <div class="row"><span class="k">Actualizada el</span><span class="val" id="sInFecha">—</span></div>
+          <div class="row"><span class="k">Fecha de lanzamiento</span><span class="val">7 jun 2026</span></div>
+          <div class="row"><span class="k">Tamaño</span><span class="val" id="sInTamano">—</span></div>
+          <div class="row"><span class="k">Descargas</span><span class="val" id="sInDescargas">—</span></div>
+          <div class="row"><span class="k">Clasificación</span><span class="val">Apto para todo público · Católico</span></div>
+          <div class="row"><span class="k">Categorías</span><span class="val">Católico, Coro, Litúrgicos, Misal</span></div>
+          <div class="row"><span class="k">Desarrollador</span><span class="val">Waljrg<br><a href="mailto:Waljrg@gmail.com">Waljrg@gmail.com</a></span></div>
+          <button class="row" id="btnPermisos" type="button" aria-haspopup="dialog"><span class="k">Permisos de la app</span><span class="val">Ver <i class="fa-solid fa-chevron-right"></i></span></button>
+          <div class="row"><span class="k">Política de privacidad</span><span class="val"><a href="https://waljrg.github.io/graduale-links/privacidad.html">Ver</a></span></div>
+          <div class="row"><span class="k">Términos de uso</span><span class="val"><a href="https://waljrg.github.io/graduale-links/terminos.html">Ver</a></span></div>
+        </div>
+      </section>
+
+      <section class="clause" id="compatSec" hidden>
+        <h2><span class="ico"><i class="fa-solid fa-mobile-screen"></i></span>Compatibilidad</h2>
+        <div class="compat-status" id="compatStatus"></div>
+        <div class="info" id="compatRows"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Hoja: Permisos de la app -->
+<div class="sheet" id="permSheet" role="dialog" aria-modal="true" aria-labelledby="permTitle">
+  <div class="sheet-bar">
+    <button id="permClose" aria-label="Volver"><i class="fa-solid fa-arrow-left"></i></button>
+    <span id="permTitle">Permisos de la app</span>
+  </div>
+  <div class="sheet-body">
+    <div class="wrap">
+      <p class="lead" style="margin-top:14px">Graduale Nostrum puede solicitar estos permisos en tu dispositivo:</p>
+      <div class="perm">
+        <div class="pi"><i class="fa-solid fa-microphone"></i></div>
+        <div><h4>Micrófono</h4><p>Para el botón CORO, que sigue la letra del canto en vivo mediante reconocimiento de voz.</p></div>
+      </div>
+      <div class="perm">
+        <div class="pi"><i class="fa-solid fa-bell"></i></div>
+        <div><h4>Notificaciones</h4><p>Para recibir avisos del coro y de nuevos cantos.</p></div>
+      </div>
+      <div class="perm">
+        <div class="pi"><i class="fa-solid fa-folder-open"></i></div>
+        <div><h4>Almacenamiento</h4><p>Para guardar en tu dispositivo los archivos que exportas (PDF, imágenes, ZIP, JSON).</p></div>
+      </div>
+      <p class="perm-note">Puedes cambiar estos permisos en cualquier momento desde los Ajustes de Android.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Visor de capturas -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Capturas de pantalla">
+  <div class="lb-top">
+    <span class="lb-count" id="lbCount"></span>
+    <button id="lbClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="lb-track" id="lbTrack"></div>
+</div>
 
 <script>
   // ===== CONFIGURA AQUÍ =====
-  const APK_URL = "https://github.com/Waljrg/graduale-links/releases/latest/download/Gradualenostrum.apk";
+  const APK_URL  = "https://github.com/Waljrg/graduale-links/releases/latest/download/Gradualenostrum.apk";
+  const REPO     = "Waljrg/graduale-links";   // repo público donde se publican los releases
+  const CAPTURAS = 7;                          // f1.jpg … f7.jpg
+  const VERSION_JSON = "../version.json";      // version.json en la raíz del repo (esta página está en /canto/)
+  const MIN_ANDROID = 6;                       // versión mínima de Android que soporta la app
+  const MIN_ANDROID_TXT = "6.0";
   // ===========================
 
-  document.getElementById('btnInstalar').href = APK_URL;
+  const $ = id => document.getElementById(id);
+  $('btnInstalar').href = APK_URL;
 
+  /* ---------- Canto compartido ---------- */
   const params = new URLSearchParams(window.location.search);
+  const safeDecode = s => { try { return decodeURIComponent(s); } catch (e) { return s; } };
   const titulo = params.get('titulo');
   const tono = params.get('tono');
-
   if (titulo) {
-    const box = document.getElementById('cantoBox');
-    box.innerHTML = `
-      <p class="canto-titulo">${decodeURIComponent(titulo)}</p>
-      ${tono ? `<p class="canto-tono">Tono: ${decodeURIComponent(tono)}</p>` : ''}
-    `;
+    $('sharedTitulo').textContent = safeDecode(titulo);
+    if (tono) $('sharedTono').textContent = 'Tono: ' + safeDecode(tono);
+    $('shared').classList.add('on');
   }
 
-  // Intento forzado de abrir la app — necesario porque WhatsApp, Instagram, etc.
-  // abren los links en su propio navegador integrado, lo que evita que Android
-  // detecte automáticamente que la app puede manejar el enlace.
+  /* ---------- Capturas ---------- */
+  const shotsEl = $('shots');
+  for (let i = 1; i <= CAPTURAS; i++) {
+    const b = document.createElement('button');
+    b.className = 'shot';
+    b.setAttribute('aria-label', 'Abrir captura ' + i);
+    const img = new Image();
+    img.src = 'f' + i + '.jpg';
+    img.alt = 'Captura ' + i + ' de Graduale Nostrum';
+    img.loading = 'lazy';
+    img.onerror = () => b.remove();
+    b.appendChild(img);
+    shotsEl.appendChild(b);
+  }
+  shotsEl.addEventListener('click', e => {
+    const b = e.target.closest('.shot');
+    if (!b) return;
+    abrirVisor([...shotsEl.querySelectorAll('.shot')].indexOf(b));
+  });
+
+  /* ---------- Capas (visor, Acerca de, Permisos) con botón atrás ---------- */
+  const capas = [];
+  const mapaCapas = { sheet: $('sheet'), perm: $('permSheet'), lb: $('lb') };
+  function sincronizar() { document.body.style.overflow = capas.length ? 'hidden' : ''; }
+  function abrirCapa(n) {
+    if (capas.includes(n)) return;
+    mapaCapas[n].classList.add('open');
+    capas.push(n);
+    history.pushState({ capa: n }, '');
+    sincronizar();
+  }
+  function cerrarCapaSuperior() {
+    const n = capas.pop();
+    if (!n) return;
+    mapaCapas[n].classList.remove('open');
+    sincronizar();
+  }
+  function volver() { if (capas.length) history.back(); }
+  window.addEventListener('popstate', cerrarCapaSuperior);
+
+  /* ---------- Visor pantalla completa ---------- */
+  const lb = $('lb'), lbTrack = $('lbTrack'), lbCount = $('lbCount');
+
+  function abrirVisor(idx) {
+    const imgs = [...shotsEl.querySelectorAll('.shot img')];
+    lbTrack.innerHTML = '';
+    imgs.forEach(im => {
+      const s = document.createElement('div');
+      s.className = 'lb-slide';
+      const c = new Image();
+      c.src = im.src; c.alt = im.alt;
+      s.appendChild(c);
+      lbTrack.appendChild(s);
+    });
+    abrirCapa('lb');
+    lbTrack.scrollLeft = idx * lbTrack.clientWidth;
+    actualizarContador();
+  }
+  function actualizarContador() {
+    const n = lbTrack.children.length;
+    const i = Math.round(lbTrack.scrollLeft / (lbTrack.clientWidth || 1));
+    lbCount.textContent = (i + 1) + ' / ' + n;
+  }
+  lbTrack.addEventListener('scroll', actualizarContador, { passive: true });
+  $('lbClose').addEventListener('click', volver);
+
+  /* ---------- Acerca de esta app y Permisos (hojas internas) ---------- */
+  $('btnAcerca').addEventListener('click', () => {
+    abrirCapa('sheet');
+    mapaCapas.sheet.querySelector('.sheet-body').scrollTop = 0;
+  });
+  $('sheetClose').addEventListener('click', volver);
+  $('btnPermisos').addEventListener('click', () => {
+    abrirCapa('perm');
+    mapaCapas.perm.querySelector('.sheet-body').scrollTop = 0;
+  });
+  $('permClose').addEventListener('click', volver);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') volver();
+    if (capas[capas.length - 1] === 'lb' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+      lbTrack.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * lbTrack.clientWidth, behavior: 'smooth' });
+    }
+  });
+
+  /* ---------- Datos reales desde GitHub Releases ---------- */
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function fmtFecha(iso) {
+    const d = new Date(iso);
+    return d.getDate() + ' de ' + MESES[d.getMonth()] + ' de ' + d.getFullYear();
+  }
+  function fmtTamano(bytes) {
+    const mb = bytes / (1024 * 1024);
+    return (mb >= 10 ? Math.round(mb) : mb.toFixed(1)).toString().replace('.', ',') + ' MB';
+  }
+  // Número exacto de descargas (suma de todos los APK publicados), con separador de miles
+  function fmtDescargas(n) {
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  // Busca la versión (ej. 2.7.1) en el título del release, el tag, el nombre del APK o las notas
+  function extraerVersion(rel, apk) {
+    const sem = /\d+\.\d+(?:\.\d+)*/;
+    const fuentes = [rel.name, rel.tag_name, apk && apk.name];
+    for (const f of fuentes) { const m = (f || '').match(sem); if (m) return m[0]; }
+    const mb = (rel.body || '').match(/(?:versi[oó]n|version|v)\s*(\d+\.\d+(?:\.\d+)*)/i);
+    if (mb) return mb[1];
+    return (rel.tag_name || rel.name || '—').replace(/^v/i, '');
+  }
+  function pintarNovedades(body, version) {
+    const t = (body || '').replace(/\r/g, '').trim();
+    const sec = $('secNovedades'), cont = $('novTxt');
+    cont.innerHTML = '';
+    if (!t) { sec.hidden = true; return; }
+    const limpiar = x => x.replace(/^#+\s*/, '').replace(/\*\*(.*?)\*\*/g, '$1');
+    let ul = null;
+    t.split('\n').forEach(l => {
+      l = l.trim();
+      if (!l) { ul = null; return; }
+      const m = l.match(/^[-*•]\s+(.*)/);
+      if (m) {
+        if (!ul) { ul = document.createElement('ul'); cont.appendChild(ul); }
+        const li = document.createElement('li'); li.textContent = limpiar(m[1]); ul.appendChild(li);
+      } else {
+        ul = null;
+        const p = document.createElement('p'); p.textContent = limpiar(l); cont.appendChild(p);
+      }
+    });
+    $('novVersion').textContent = 'Versión ' + version;
+    sec.hidden = false;
+  }
+  let datosActuales = null;
+  function pintar(d) {
+    datosActuales = d;
+    const v = x => x || '—';
+    $('stDescargas').textContent = v(d.descargas);
+    $('stTamano').textContent = v(d.tamano);
+    $('stVersion').textContent = v(d.version);
+    $('inVersion').textContent = v(d.version);
+    $('inFecha').textContent = v(d.fecha);
+    $('abFecha').textContent = v(d.fecha);
+    $('inTamano').textContent = v(d.tamano);
+    $('inDescargas').textContent = v(d.descargas);
+    $('sInVersion').textContent = v(d.version);
+    $('sInFecha').textContent = v(d.fecha);
+    $('sInTamano').textContent = v(d.tamano);
+    $('sInDescargas').textContent = v(d.descargas);
+    pintarNovedades(d.novedades, d.version || '—');
+    renderCompat();
+  }
+  function sinDatos() {
+    ['stDescargas','stTamano','stVersion'].forEach(id => $(id).textContent = '—');
+  }
+
+  // Caché local para mostrar datos al instante y como respaldo si la API falla o hay límite de peticiones
+  const CK = 'gn_release_v3';
+  let cache = null;
+  try { cache = JSON.parse(localStorage.getItem(CK)); if (cache) pintar(cache); } catch (e) {}
+
+  const leerRelease = () => fetch('https://api.github.com/repos/' + REPO + '/releases?per_page=100')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(rels => {
+      const pub = rels.filter(r => !r.draft && !r.prerelease);
+      if (!pub.length) throw new Error('sin releases');
+      const ultimo = pub[0];
+      const apk = (ultimo.assets || []).find(a => /\.apk$/i.test(a.name)) || (ultimo.assets || [])[0];
+      let total = 0;
+      pub.forEach(r => (r.assets || []).forEach(a => { if (/\.apk$/i.test(a.name)) total += a.download_count || 0; }));
+      return {
+        version: extraerVersion(ultimo, apk),
+        fecha: fmtFecha(ultimo.published_at || ultimo.created_at),
+        tamano: apk ? fmtTamano(apk.size) : '—',
+        descargas: fmtDescargas(total),
+        novedades: ultimo.body || ''
+      };
+    });
+
+  // version.json (raíz del repo): la versión real de la app y, opcionalmente, las novedades
+  const leerVersionJson = () => fetch(VERSION_JSON, { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(j => {
+      const out = {};
+      if (typeof j === 'string' || typeof j === 'number') { out.version = String(j); return out; }
+      const pick = (o, ks) => { for (const k of ks) if (o && o[k] != null && o[k] !== '') return o[k]; return null; };
+      const ver = pick(j, ['version', 'versionName', 'version_name', 'versión', 'v']);
+      if (ver != null) out.version = String(ver).replace(/^v/i, '');
+      const nov = pick(j, ['novedades', 'notas', 'notes', 'changelog', 'whatsNew']);
+      if (nov != null) out.novedades = Array.isArray(nov) ? nov.join('\n') : String(nov);
+      return out;
+    });
+
+  Promise.allSettled([leerRelease(), leerVersionJson()]).then(([rr, vj]) => {
+    const nuevo = {};
+    if (rr.status === 'fulfilled') Object.assign(nuevo, rr.value);
+    // La versión de version.json manda sobre la que se deduzca del release
+    if (vj.status === 'fulfilled') {
+      if (vj.value.version) nuevo.version = vj.value.version;
+      if (vj.value.novedades) nuevo.novedades = vj.value.novedades;
+    }
+    if (!Object.keys(nuevo).length) { if (!cache) sinDatos(); return; }
+    const datos = Object.assign({}, cache || {}, nuevo);
+    pintar(datos);
+    try { localStorage.setItem(CK, JSON.stringify(datos)); } catch (e) {}
+  });
+
+  /* ---------- Compatibilidad con el dispositivo ---------- */
+  let dispositivo = null;
+  function marcaDe(m) {
+    const reglas = [
+      [/^(SM-|GT-|SC-|SGH-|Galaxy)/i, 'Samsung'], [/^Pixel/i, 'Google'],
+      [/^(Redmi|POCO|Mi\s|M\d{4}[A-Z0-9]+$|\d{6,8}[A-Z]{1,3}$)/i, 'Xiaomi'],
+      [/^(moto|XT\d{4})/i, 'Motorola'], [/^TECNO/i, 'TECNO'], [/^Infinix/i, 'Infinix'], [/^itel/i, 'itel'],
+      [/^HONOR/i, 'HONOR'], [/^(HUAWEI|[A-Z]{3}-L\d{2}|[A-Z]{3}-LX\d)/i, 'Huawei'],
+      [/^CPH\d/i, 'OPPO'], [/^RMX\d/i, 'realme'], [/^(vivo|V\d{4})/i, 'vivo'],
+      [/^(LM-|LG-)/i, 'LG'], [/^Nokia/i, 'Nokia'], [/^OnePlus/i, 'OnePlus']
+    ];
+    for (const [re, marca] of reglas) if (re.test(m)) return marca;
+    return '';
+  }
+  async function detectarDispositivo() {
+    const ua = navigator.userAgent || '';
+    const esIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (esIOS) return { plataforma: 'ios' };
+    if (!/Android/i.test(ua)) return { plataforma: 'otro' };
+    let ver = null, modelo = '';
+    const mv = ua.match(/Android\s([\d.]+)/i);
+    if (mv) ver = parseFloat(mv[1]);
+    const mm = ua.match(/Android\s[\d.]+;\s*([^;)]+)/i);
+    if (mm) modelo = mm[1].replace(/\sBuild\/.*$/i, '').trim();
+    try {
+      const uad = navigator.userAgentData;
+      if (uad && uad.getHighEntropyValues) {
+        const h = await uad.getHighEntropyValues(['model', 'platformVersion']);
+        if (h.model) modelo = h.model;
+        if (h.platformVersion && parseFloat(h.platformVersion) > 0) ver = parseFloat(h.platformVersion);
+      }
+    } catch (e) {}
+    // Chrome reduce el UA y a veces devuelve "K" o "wv" en lugar del modelo real
+    if (!modelo || modelo.length < 2 || /^(K|wv)$/i.test(modelo)) modelo = '';
+    return { plataforma: 'android', androidVer: ver, modelo, marca: modelo ? marcaDe(modelo) : '' };
+  }
+  function renderCompat() {
+    const sec = $('compatSec'), dv = dispositivo;
+    // Si no se puede analizar el dispositivo, la sección no se muestra
+    if (!dv || dv.plataforma === 'otro' || (dv.plataforma === 'android' && dv.androidVer == null)) { sec.hidden = true; return; }
+    const d = datosActuales || {};
+    const ok = dv.plataforma === 'android' && dv.androidVer >= MIN_ANDROID;
+    const st = $('compatStatus');
+    st.className = 'compat-status ' + (ok ? 'ok' : 'bad');
+    st.innerHTML = '';
+    const ic = document.createElement('i');
+    ic.className = 'fa-solid ' + (ok ? 'fa-circle-check' : 'fa-circle-xmark');
+    const tx = document.createElement('div');
+    const t1 = document.createElement('strong'), t2 = document.createElement('small');
+    if (ok) {
+      t1.textContent = 'Funciona en tu dispositivo';
+      t2.textContent = 'Tu versión de Android es compatible con Graduale Nostrum.';
+    } else if (dv.plataforma === 'ios') {
+      t1.textContent = 'No disponible para este dispositivo';
+      t2.textContent = 'Graduale Nostrum es una app para Android.';
+    } else {
+      t1.textContent = 'No compatible con tu dispositivo';
+      t2.textContent = 'Necesitas Android ' + MIN_ANDROID_TXT + ' o superior.';
+    }
+    tx.append(t1, t2); st.append(ic, tx);
+
+    const filas = [];
+    if (dv.plataforma === 'ios') filas.push(['Sistema', 'iOS']);
+    if (dv.marca) filas.push(['Marca', dv.marca]);
+    if (dv.modelo) filas.push(['Modelo', dv.modelo]);
+    if (dv.plataforma === 'android') filas.push(['Tu versión de Android', 'Android ' + dv.androidVer]);
+    filas.push(['Requiere', 'Android ' + MIN_ANDROID_TXT + ' o superior']);
+    filas.push(['Versión de la app', d.version || '—']);
+    filas.push(['Tamaño de descarga', d.tamano || '—']);
+    const cont = $('compatRows');
+    cont.innerHTML = '';
+    filas.forEach(([k, v]) => {
+      const r = document.createElement('div'); r.className = 'row';
+      const a = document.createElement('span'); a.className = 'k'; a.textContent = k;
+      const b = document.createElement('span'); b.className = 'val'; b.textContent = v;
+      r.append(a, b); cont.appendChild(r);
+    });
+    sec.hidden = false;
+  }
+  detectarDispositivo().then(d => { dispositivo = d; renderCompat(); });
+
+  /* ---------- Intento forzado de abrir la app (canto compartido) ---------- */
+  // Necesario porque WhatsApp, Instagram, etc. abren los links en su navegador integrado,
+  // lo que evita que Android detecte que la app puede manejar el enlace.
   const id = params.get('id');
   if (id) {
     const fallbackUrl = window.location.href;
